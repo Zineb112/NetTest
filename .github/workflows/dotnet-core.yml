@@ -34,10 +34,10 @@ jobs:
       env:
         ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
     
-    # - name: Install dependencies
-    #  run: msbuild /t:Restore
-    #  env:
-    #    NUGET_AUTH_TOKEN: ${{ github.token }}
+    - name: Install dependencies
+      run: msbuild /t:Restore
+      env:
+        NUGET_AUTH_TOKEN: ${{ github.token }}
     
     # Execute all unit tests in the solution
     - name: Execute unit tests
@@ -45,11 +45,11 @@ jobs:
 
     - name: Build
       run: |
-        dotnet restore NetTest/NetTest.csproj
-        msbuild /t:Pack /p:Configuration=Debug NetTest/NetTest.csproj
+        dotnet restore DotNet.Core.Console.Exemple/DotNet.Core.Console.Exemple.csproj
+        msbuild /t:Pack /p:Configuration=Debug DotNet.Core.Console.Exemple/DotNet.Core.Console.Exemple.csproj
     
     - name: Copy
-      run: copy NetTest/bin/Debug/*.nupkg .
+      run: copy DotNet.Core.Console.Exemple/bin/Debug/*.nupkg .
     
     # - name: PushNuget
     #   run: dotnet nuget push *.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.PUBLISH_TO_NUGET_ORG }} --skip-duplicate
