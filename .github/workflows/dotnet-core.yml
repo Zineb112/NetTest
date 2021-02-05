@@ -35,9 +35,9 @@ jobs:
         ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
     
     - name: Install dependencies
-      run: msbuild /t:Restore
-      env:
-        NUGET_AUTH_TOKEN: ${{ github.token }}
+    #  run: msbuild /t:Restore
+    #  env:
+    #    NUGET_AUTH_TOKEN: ${{ github.token }}
     
     # Execute all unit tests in the solution
     - name: Execute unit tests
